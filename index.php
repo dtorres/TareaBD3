@@ -1,3 +1,11 @@
+<?
+session_start();
+if ($_SESSION && isset($_SESSION["user"])) {
+    header("Location: profile.php");
+    return;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="">
 <head>
