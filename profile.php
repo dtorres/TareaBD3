@@ -40,6 +40,8 @@ $user_hasLista = (pg_num_rows($user_pertenece_lista_res) > 0);
 <ul>
     <? if (!$user_hasLista){ ?>
     <li><a href="inscribir_lista.php">Inscribir Lista</a></li>
+    <? } else { ?>
+    <li><a href="editar_lista.php">Editar Lista</a></li>
     <? } ?>
     <li><a href="#">Ver Proyectos</a></li>
 </ul>    
