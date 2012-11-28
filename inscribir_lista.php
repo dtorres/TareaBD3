@@ -80,12 +80,8 @@ $user = pg_fetch_array($res, 0);
 	        html += "<br/>";
 	        html += "</div>";
     	    $(".integrantesInputs").append(html);
-	    }
-	    	    
-		$(document).ready(function(){
-    		console.log(users);
-		});
-	</script>
+	    }	    
+	    </script>
 	</head>
 <body>
 

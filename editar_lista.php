@@ -8,6 +8,11 @@ session_start();
 
 include_once("conexion.php");
 
+if ($_POST) {
+    pg_query("UPDATE listas SET nombre='".$_POST["nombre"]."', vision='".$_POST["vision"]."', mision='".$_POST["mision"]."' WHERE id_dueno='".$_SESSION["user"]."'");
+}
+
+
 $res = pg_query("SELECT * FROM listas WHERE id_dueno='".$_SESSION["user"]."'");
 
 if (pg_num_rows($res) == 0) {
@@ -32,7 +37,7 @@ $lista = pg_fetch_array($res, 0);
 <ul>
     <li><a href="#">Inscribir Dpto.</a></li>
     <li><a href="#">Inscribir Delegado</a></li>
-    <li><a href="#">Crear Proyecto</a></li>
+    <li><a href="crear_proyecto.php">Crear Proyecto</a></li>
 </ul>
 
 <h1>Editar Datos</h1>
@@ -47,6 +52,7 @@ $lista = pg_fetch_array($res, 0);
 <label>Mision</label>
 <textarea name="mision" maxlength="500"><?= $lista["mision"] ?></textarea>
 
+<input type="submit"/>
 </form>
 
 </body>
