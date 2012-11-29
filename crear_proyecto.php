@@ -19,6 +19,8 @@ if ($_POST) {
     foreach ($_POST["etapa"] as $integrante) {
         $query = "INSERT INTO etapas (id_proyecto, id_responsable, descripcion, fecha_inicio, fecha_termino) VALUES ($idProy, ".$integrante["id_responsable"].", '".$integrante["descripcion"]."', '".$integrante["fecha_inicio"]."', '".$integrante["fecha_termino"]."')";
         
+        echo($query);
+        
         pg_query($query);
         
     }
@@ -68,10 +70,10 @@ $resdptos = pg_query("SELECT * FROM departamentos");
 	        html += "</select>";
 	        html += "<label for=\"etapa["+newIdx+"][descripcion]\">Descripcion</label>";
 	        html += "<input name=\"etapa["+newIdx+"][descripcion]\"/>";
-	        html += "<label for=\"integrante["+newIdx+"][fecha_inicio]\">Fecha Inicio</label>";
-	        html += "<input name=\"integrante["+newIdx+"][fecha_inicio]\"/>";
-	        html += "<label for=\"integrante["+newIdx+"][fecha_termino]\">Fecha Termino</label>";
-	        html += "<input name=\"integrante["+newIdx+"][fecha_termino]\"/>";
+	        html += "<label for=\"etapa["+newIdx+"][fecha_inicio]\">Fecha Inicio</label>";
+	        html += "<input name=\"etapa["+newIdx+"][fecha_inicio]\"/>";
+	        html += "<label for=\"etapa["+newIdx+"][fecha_termino]\">Fecha Termino</label>";
+	        html += "<input name=\"etapa["+newIdx+"][fecha_termino]\"/>";
 	        html += "<br/>";
 	        html += "</div>";
     	    theEl.append(html);
