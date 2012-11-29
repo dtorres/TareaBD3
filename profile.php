@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-    if (!isset($_SESSION["user"])) {
+if (!isset($_SESSION["user"])) {
     header("Location: index.php");
     return;
 }
@@ -21,6 +21,11 @@ $user = pg_fetch_array($res, 0);
 $user_pertenece_lista_res = pg_query("SELECT id_alumno FROM directivos WHERE id_alumno=".$user[0]);
 
 $user_hasLista = (pg_num_rows($user_pertenece_lista_res) > 0); 
+
+$user_hasProyecto_res = pg_query("SELECT id_alumno_dueno FROM proyectos WHERE id_alumno_dueno=".$user[0]);
+
+$user_hasProyecto = (pg_num_rows($user_hasProyecto_res) > 0);
+
 ?>
 <!DOCTYPE html>
 <html lang="">
@@ -30,6 +35,7 @@ $user_hasLista = (pg_num_rows($user_pertenece_lista_res) > 0);
 	<meta name="description" content="" />
   	<meta name="keywords" content="" />
 	<meta name="robots" content="" />
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js" type="text/javascript"></script>
 </head>
 <body>
 
@@ -42,6 +48,11 @@ $user_hasLista = (pg_num_rows($user_pertenece_lista_res) > 0);
     <li><a href="inscribir_lista.php">Inscribir Lista</a></li>
     <? } else { ?>
     <li><a href="editar_lista.php">Editar Lista</a></li>
+    <? } ?>
+    <? if (!$user_hasProyecto){ ?>
+    <li><a href="crear_proyecto.php">Inscribir Proyecto</a></li>
+    <? } else { ?>
+    <li><a href="editar_proyecto.php">Editar Proyecto</a></li>
     <? } ?>
     <li><a href="#">Ver Proyectos</a></li>
 </ul>    

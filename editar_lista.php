@@ -35,7 +35,7 @@ $lista = pg_fetch_array($res, 0);
 <body>
 
 <ul>
-    <li><a href="#">Inscribir Dpto.</a></li>
+    <li><a href="crear_dpto.php">Inscribir Dpto.</a></li>
     <li><a href="#">Inscribir Delegado</a></li>
     <li><a href="crear_proyecto.php">Crear Proyecto</a></li>
 </ul>
